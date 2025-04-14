@@ -1,0 +1,115 @@
+class Node:
+    def __init__(self, data, parent=None):
+        self.left = None
+
+        self.right = None
+
+        self.parent = parent 
+
+        self.data = data
+
+    def insert(self, data):
+
+        if self.data:
+
+            if data < self.data:
+
+                if self.left is None:
+
+                    self.left = Node(data, parent=self)  
+
+                else:
+                    self.left.insert(data)
+
+            elif data > self.data:
+
+                if self.right is None:
+                    
+                    self.right = Node(data, parent=self)  
+
+                else:
+
+                    self.right.insert(data)
+        else:
+
+            self.data = data
+
+    # Traverse Upward
+    def traverse_up(self):
+        if self.parent:
+            print(f"Moving up to parent: {self.parent.data}")
+            return self.parent
+        else:
+            print("Already at the root.")
+            return None
+
+    # Traverse Downward
+    def traverse_down(self, direction):
+        if direction == "left" and self.left:
+            print(f"Moving down to left child: {self.left.data}")
+            return self.left
+        elif direction == "right" and self.right:
+            print(f"Moving down to right child: {self.right.data}")
+            return self.right
+        else:
+            print(f"No {direction} child to move to.")
+            return None
+
+   
+    def PrintTree(self):
+
+        if self.left:
+
+            self.left.PrintTree()
+
+        print(self.data, end=" ")
+
+        if self.right:
+
+            self.right.PrintTree()
+
+    # Inorder traversal
+    def inorderTraversal(self, root):
+        res = []
+        if root:
+            res = self.inorderTraversal(root.left)
+            res.append(root.data)
+            res = res + self.inorderTraversal(root.right)
+        return res
+
+
+
+
+root = Node(0.0)
+
+
+
+root.insert(-0.1)  # Insert into the left branch
+root.insert(0.1)   # Insert into the right branch
+root.insert(-0.2)  # Insert into the left branch
+root.insert(0.2)   # Insert into the right branch
+root.insert(-0.3)  # Insert into the left branch
+root.insert(0.3)   # Insert into the right branch
+
+
+
+print("Tree:")
+
+root.PrintTree()
+
+print("\n")
+
+# Example of up and down movements
+current_node = root
+print("\nStarting at root:", current_node.data)
+
+# Move down to the left child
+current_node = current_node.traverse_down("left")
+
+# Move down to the left child's left child
+if current_node:
+    current_node = current_node.traverse_down("left")
+
+# Move up to the parent
+if current_node:
+    current_node = current_node.traverse_up()
