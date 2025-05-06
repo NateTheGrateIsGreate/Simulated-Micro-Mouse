@@ -101,16 +101,20 @@ node_42.add_child(node_43)
 node_42.add_child(node_44)
 
 node_19.add_child(node_50)
-node_19.add_child(node_50)
+
 node_50.add_child(node_58)
+node_50.add_child(node_59)
+node_50.add_child(node_60)
 
-#node_58.add_child(node_59)
-#node_58.add_child(node_60)
+node_50.add_child(node_57)
+node_50.add_child(node_56)
 
-#node_50.add_child(node_)
-
-
-
+node_19.add_child(node_51)
+node_19.add_child(node_52)
+node_19.add_child(node_53)
+node_19.add_child(node_45)
+node_19.add_child(node_37)
+node_19.add_child(node_36)
 
 
 node_12.add_child(node_10)
@@ -175,13 +179,6 @@ node_4.add_child(node_37)
 node_37.add_child(node_38)
 
 node_4.add_child(node_36)
-
-
-
-
-
-
-
 
 
 root.print_tree()
