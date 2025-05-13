@@ -1,3 +1,23 @@
+# ANSI escape codes for colors
+
+RED = "\033[91m"
+
+GREEN = "\033[92m"
+
+YELLOW = "\033[93m" 
+
+BLUE = "\033[94m"
+
+MAGENTA = "\033[95m" 
+
+CYAN = "\033[96m"
+
+WHITE = "\033[97m"
+
+RESET = "\033[0m"
+
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -7,11 +27,19 @@ class Node:
         self.children.append(child)
 
     def print_tree(self, level=0):
-        print("  " * level + str(self.data))
+    
+        if "Dead End" in self.data:
+            print(RED + "  " * level + str(self.data) + RESET)  # Red for dead ends
+        
+        elif "End" in self.data:
+            print(BLUE + "  " * level + str(self.data) + RESET)  # Blue for end 
+        
+        else:
+            print("  " * level + str(self.data))  # Default color
         for child in self.children:
             child.print_tree(level + 1)
 
-# Usage
+
 root = Node("0,0 (Start)")
 node_1 = Node("0,1")
 node_2 = Node("0,2")
@@ -50,7 +78,7 @@ node_34 = Node("4,2")
 node_35 = Node("4,3")
 node_36 = Node("4,4(End)")
 node_37 = Node("4,5")
-node_38 = Node("4,6")
+node_38 = Node("4,6 (Dead End) ")
 node_39 = Node("4,7")
 node_40 = Node("5,0")
 node_41 = Node("5,1")
@@ -73,7 +101,7 @@ node_57 = Node("7,1")
 node_58 = Node("7,2")
 node_59 = Node("7,3")
 node_60 = Node("7,4")
-node_61 = Node("7,5")
+node_61 = Node("7,5(Dead End)" )
 node_62 = Node("7,6")
 node_63 = Node("7,7")
 
